@@ -29,8 +29,8 @@ By creating financial incentives for sustainable practices, EcoChain Guardian he
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/ecochain-guardian.git
-cd ecochain-guardian
+git clone https://github.com/eres45/EcoChain.git
+cd EcoChain
 ```
 
 2. Install Python dependencies:
@@ -127,7 +127,7 @@ python -m ecochain.reward_module.eco_staking --test
 ## 📊 Project Structure
 
 ```
-ecochain/
+EcoChain/
 ├── agent/                # Superior Agents framework implementation
 ├── config/               # Configuration files
 ├── data/                 # Data files and ML models
@@ -234,4 +234,13 @@ This project is licensed under the Apache License 2.0 - see the LICENSE file for
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please see CONTRIBUTING.md for details on how to contribute to this project. 
+Contributions are welcome! Please see CONTRIBUTING.md for details on how to contribute to this project.
+
+## 👥 Authors
+
+- **Ronit Eres** - *Initial work* - [eres45](https://github.com/eres45)
+
+## 🙏 Acknowledgments
+
+- Thanks to all contributors who have helped shape this project
+- Special thanks to the blockchain and sustainability communities for inspiration 

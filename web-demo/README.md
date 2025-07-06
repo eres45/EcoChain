@@ -22,4 +22,8 @@ The web demo will be available at http://localhost:3010
 - Smart contract automation interface
 - Zero-knowledge verification demo
 
-Please refer to the main [README.md](../README.md) in the project root for complete documentation. 
+Please refer to the main [README.md](../README.md) in the project root for complete documentation.
+
+## Repository
+
+This project is part of the [EcoChain](https://github.com/eres45/EcoChain) repository. 
