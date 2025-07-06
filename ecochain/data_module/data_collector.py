@@ -4,6 +4,10 @@ import random
 import requests
 from typing import Dict, List, Optional
 import logging
+from datetime import datetime, timedelta
+import math
+import random
+from ecochain.analysis_module.sustainability_scorer import SustainabilityScorer
 
 logger = logging.getLogger(__name__)
 
@@ -175,4 +179,170 @@ class DataCollector:
                 "geothermal": random.uniform(0, renewable),
                 "biomass": random.uniform(0, renewable),
             }
+        }
+
+    def get_historical_scores(self, days: int = 180, operation_id: Optional[str] = None) -> List[Dict]:
+        """
+        Get historical sustainability scores.
+        
+        Args:
+            days: Number of days of historical data to retrieve.
+            operation_id: Optional operation ID to filter by.
+            
+        Returns:
+            List of dictionaries with historical score data.
+        """
+        # In a real implementation, this would query a database
+        # For demonstration, we'll generate synthetic data
+        
+        try:
+            today = datetime.now()
+            start_date = today - timedelta(days=days)
+            
+            # Generate daily data points
+            data_points = []
+            
+            if operation_id:
+                # Generate data for a specific operation
+                operation = self.get_mining_operations()[int(operation_id.split('-')[-1])]
+                if not operation:
+                    logger.warning(f"Operation {operation_id} not found")
+                    return []
+                
+                # Get the current score as a reference
+                carbon_data = self.get_carbon_data(operation_id)
+                current_score = 70  # Default if no data available
+                
+                if carbon_data:
+                    scorer = SustainabilityScorer()
+                    score_result = scorer.score_operation(operation, carbon_data)
+                    current_score = score_result.get("sustainability_score", 70)
+                
+                # Generate historical data with realistic patterns
+                for i in range(days):
+                    date = start_date + timedelta(days=i)
+                    
+                    # Add trend (gradual improvement over time)
+                    trend_factor = i / days * 10  # Up to 10 point improvement over the period
+                    
+                    # Add seasonality (weekly pattern)
+                    day_of_week = date.weekday()
+                    seasonality = math.sin(day_of_week * math.pi / 3.5) * 3  # ±3 points weekly cycle
+                    
+                    # Add some randomness
+                    noise = random.normalvariate(0, 2)  # Random noise with std dev of 2
+                    
+                    # Calculate score for this day
+                    base_score = max(0, min(100, current_score - trend_factor))
+                    score = base_score + seasonality + noise
+                    score = max(0, min(100, score))  # Ensure within valid range
+                    
+                    data_points.append({
+                        "date": date.strftime("%Y-%m-%d"),
+                        "operation_id": operation_id,
+                        "score": round(score, 2)
+                    })
+            else:
+                # Generate average data across all operations
+                operations = self.get_mining_operations()
+                if not operations:
+                    logger.warning("No operations found")
+                    return []
+                
+                # Calculate average current score
+                total_score = 0
+                count = 0
+                
+                for op in operations:
+                    carbon_data = self.get_carbon_data(op["id"])
+                    if carbon_data:
+                        scorer = SustainabilityScorer()
+                        score_result = scorer.score_operation(op, carbon_data)
+                        total_score += score_result.get("sustainability_score", 70)
+                        count += 1
+                
+                current_score = total_score / count if count > 0 else 70
+                
+                # Generate historical data with realistic patterns
+                for i in range(days):
+                    date = start_date + timedelta(days=i)
+                    
+                    # Add trend (gradual improvement over time)
+                    trend_factor = i / days * 8  # Up to 8 point improvement over the period
+                    
+                    # Add seasonality (weekly pattern)
+                    day_of_week = date.weekday()
+                    seasonality = math.sin(day_of_week * math.pi / 3.5) * 2  # ±2 points weekly cycle
+                    
+                    # Add some randomness
+                    noise = random.normalvariate(0, 1.5)  # Random noise with std dev of 1.5
+                    
+                    # Calculate score for this day
+                    base_score = max(0, min(100, current_score - trend_factor))
+                    score = base_score + seasonality + noise
+                    score = max(0, min(100, score))  # Ensure within valid range
+                    
+                    data_points.append({
+                        "date": date.strftime("%Y-%m-%d"),
+                        "score": round(score, 2)
+                    })
+            
+            return data_points
+            
+        except Exception as e:
+            logger.error(f"Error getting historical scores: {str(e)}")
+            return []
+    
+    def get_token_prices(self, days: int = 180) -> List[Dict]:
+        """
+        Get historical token prices.
+        
+        Args:
+            days: Number of days of historical data to retrieve.
+            
+        Returns:
+            List of dictionaries with historical price data.
+        """
+        # In a real implementation, this would query a price API or database
+        # For demonstration, we'll generate synthetic data
+        
+        try:
+            today = datetime.now()
+            start_date = today - timedelta(days=days)
+            
+            # Generate daily data points
+            data_points = []
+            
+            # Set base price
+            base_price = 1.25  # $1.25 USD
+            
+            # Generate price data with realistic patterns
+            for i in range(days):
+                date = start_date + timedelta(days=i)
+                
+                # Add trend (gradual increase over time)
+                trend_factor = i / days * 0.5  # Up to $0.50 increase over the period
+                
+                # Add market cycles (30-day cycle)
+                market_cycle = math.sin(i * math.pi / 15) * 0.15  # ±$0.15 market cycle
+                
+                # Add some randomness (volatility)
+                volatility = random.normalvariate(0, 0.03)  # Random noise with std dev of $0.03
+                
+                # Calculate price for this day
+                price = base_price + trend_factor + market_cycle + volatility
+                price = max(0.1, price)  # Ensure price is positive
+                
+                data_points.append({
+                    "date": date.strftime("%Y-%m-%d"),
+                    "price": round(price, 4),
+                    "volume": round(random.uniform(100000, 500000), 0),
+                    "market_cap": round(price * 10000000, 0)  # Assuming 10M token supply
+                })
+            
+            return data_points
+            
+        except Exception as e:
+            logger.error(f"Error getting token prices: {str(e)}")
+            return [] 
         } 

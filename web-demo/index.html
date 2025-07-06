@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoChain Guardian | Sustainable Crypto Mining</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dark-mode.css">
+    <style>
+        :root {
+            --primary: #2ecc71;
+            --secondary: #27ae60;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --accent: #3498db;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--dark);
+            background-color: #f9f9f9;
+        }
+        
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+            color: white;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSgxMzUpIj48cmVjdCBpZD0icGF0dGVybi1oZXgiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSI+PC9yZWN0PjwvcGF0dGVybj48L2RlZnM+PHJlY3QgZmlsbD0idXJsKCNwYXR0ZXJuKSIgaGVpZ2h0PSIxMDAlIiB3aWR0aD0iMTAwJSI+PC9yZWN0Pjwvc3ZnPg==');
+            opacity: 0.4;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .video-container {
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            aspect-ratio: 16/9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .video-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 50px;
+            font-weight: 700;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary);
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+            border-top: 4px solid var(--primary);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .screenshot {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        .screenshot img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+        
+        .screenshot:hover img {
+            transform: scale(1.02);
+        }
+        
+        .stats-section {
+            background-color: var(--dark);
+            color: white;
+            padding: 80px 0;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            padding: 12px 30px;
+            font-weight: 600;
+            border-radius: 30px;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary);
+            border-color: var(--secondary);
+        }
+        
+        .btn-outline-light {
+            border-radius: 30px;
+            padding: 12px 30px;
+            font-weight: 600;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 50px 0;
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .tech-badge {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .chain-logo {
+            height: 30px;
+            margin: 0 10px;
+            filter: grayscale(100%) brightness(1.5);
+            transition: all 0.3s ease;
+        }
+        
+        .chain-logo:hover {
+            filter: grayscale(0%);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-leaf me-2"></i>
+                EcoChain Guardian
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#demo">Demo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#architecture">Architecture</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#screenshots">Screenshots</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#model-testing">
+                            <span class="badge bg-danger animate-pulse me-1">New</span>Try Models
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-primary text-white ms-3" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <h1 class="display-4 fw-bold mb-4">Rewarding Sustainable Crypto Mining</h1>
+                    <p class="lead mb-4">EcoChain Guardian is a blockchain-based platform that monitors, analyzes, and rewards eco-friendly cryptocurrency mining operations using AI/ML, zero-knowledge proofs, and multi-chain support.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#features" class="btn btn-light btn-lg">Explore Features</a>
+                        <a href="#demo" class="btn btn-outline-light btn-lg">Watch Demo</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="video-container">
+                        <div class="video-placeholder">
+                            <i class="fas fa-play-circle fa-4x mb-3"></i>
+                            <h3>Demo Video</h3>
+                            <p>Replace this placeholder with your demo video</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-5 my-5" id="features">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Key Features</h2>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>ML-based Scoring</h3>
+                        <p>Advanced machine learning model for accurate sustainability scoring with anomaly detection to identify suspicious reporting.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>zkSNARK Verification</h3>
+                        <p>Zero-knowledge proofs allow miners to prove their sustainability credentials without revealing sensitive operational data.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <h3>EcoToken Staking</h3>
+                        <p>Stake EcoTokens to earn additional rewards with tier-based multipliers based on sustainability performance.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Community Governance</h3>
+                        <p>DAO-style governance for parameter adjustment, allowing token holders to vote on system changes.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <h3>API Gateway</h3>
+                        <p>REST and GraphQL endpoints for third-party integration with authentication and rate limiting.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-link"></i>
+                        </div>
+                        <h3>Multi-chain Support</h3>
+                        <p>Connect to Ethereum, Polygon, and Solana with cross-chain bridge for token transfers between networks.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section class="py-5 bg-light" id="demo">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">See It In Action</h2>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="ratio ratio-16x9">
+                        <div class="video-placeholder bg-dark">
+                            <i class="fas fa-play-circle fa-4x mb-3"></i>
+                            <h3>Demo Video</h3>
+                            <p>Replace this placeholder with your demo video</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-terminal fa-3x text-primary mb-3"></i>
+                            <h4>CLI Demo</h4>
+                            <p>Comprehensive command-line interface for all operations</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-server fa-3x text-primary mb-3"></i>
+                            <h4>API Demo</h4>
+                            <p>REST and GraphQL API endpoints for integration</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-project-diagram fa-3x text-primary mb-3"></i>
+                            <h4>Oracle Network Demo</h4>
+                            <p>Decentralized oracle network for carbon data reporting</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section class="py-5 my-5" id="architecture">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Architecture</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <img src="https://via.placeholder.com/600x400?text=Architecture+Diagram" alt="Architecture Diagram" class="img-fluid rounded shadow">
+                </div>
+                <div class="col-lg-6">
+                    <h3 class="mb-4">Modular Design</h3>
+                    <div class="mb-4">
+                        <h5><i class="fas fa-database me-2 text-primary"></i> Data Module</h5>
+                        <p>Collects and processes data from mining operations, including hardware information, energy consumption metrics, carbon footprint data, and energy source information.</p>
+                    </div>
+                    <div class="mb-4">
+                        <h5><i class="fas fa-brain me-2 text-primary"></i> Analysis Module</h5>
+                        <p>Processes mining data using ML models to evaluate sustainability with multi-factor assessment and tiered classification system.</p>
+                    </div>
+                    <div class="mb-4">
+                        <h5><i class="fas fa-gift me-2 text-primary"></i> Reward Module</h5>
+                        <p>Handles ERC-20 token minting, distribution, NFT badges for sustainability achievements, and smart contract interactions.</p>
+                    </div>
+                    <div>
+                        <h5><i class="fas fa-robot me-2 text-primary"></i> Agent Module</h5>
+                        <p>Coordinates all activities with workflow orchestration, scheduling of analysis and reward cycles, reporting and data storage.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                    <h4>Supported Blockchains</h4>
+                    <div class="d-flex justify-content-center align-items-center mt-4">
+                        <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="Ethereum" class="chain-logo">
+                        <img src="https://cryptologos.cc/logos/polygon-matic-logo.png" alt="Polygon" class="chain-logo">
+                        <img src="https://cryptologos.cc/logos/solana-sol-logo.png" alt="Solana" class="chain-logo">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <div class="stat-number">300x</div>
+                        <div>Energy Efficiency</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <div class="stat-number">3</div>
+                        <div>Blockchains</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <div class="stat-number">85%</div>
+                        <div>ML Accuracy</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <div class="stat-number">5</div>
+                        <div>Oracle Providers</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshots Section -->
+    <section class="py-5 my-5" id="screenshots">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Screenshots</h2>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="screenshot">
+                        <img src="https://via.placeholder.com/600x400?text=ML+Scoring+Dashboard" alt="ML Scoring Dashboard" class="img-fluid">
+                    </div>
+                    <h4 class="mt-3">ML Scoring Dashboard</h4>
+                    <p>Machine learning model for sustainability scoring with anomaly detection.</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="screenshot">
+                        <img src="https://via.placeholder.com/600x400?text=zkSNARK+Verification" alt="zkSNARK Verification" class="img-fluid">
+                    </div>
+                    <h4 class="mt-3">zkSNARK Verification</h4>
+                    <p>Zero-knowledge proofs for verified carbon reporting.</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="screenshot">
+                        <img src="https://via.placeholder.com/600x400?text=Token+Staking+Interface" alt="Token Staking Interface" class="img-fluid">
+                    </div>
+                    <h4 class="mt-3">Token Staking Interface</h4>
+                    <p>EcoToken staking with tier-based rewards.</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="screenshot">
+                        <img src="https://via.placeholder.com/600x400?text=Governance+Portal" alt="Governance Portal" class="img-fluid">
+                    </div>
+                    <h4 class="mt-3">Governance Portal</h4>
+                    <p>DAO-style governance for parameter adjustment.</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="screenshot">
+                        <img src="https://via.placeholder.com/600x400?text=API+Gateway" alt="API Gateway" class="img-fluid">
+                    </div>
+                    <h4 class="mt-3">API Gateway</h4>
+                    <p>REST and GraphQL endpoints for third-party integration.</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="screenshot">
+                        <img src="https://via.placeholder.com/600x400?text=Oracle+Network" alt="Oracle Network" class="img-fluid">
+                    </div>
+                    <h4 class="mt-3">Oracle Network</h4>
+                    <p>Decentralized oracle network for carbon data reporting.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: Interactive Model Testing -->
+    <section class="py-5 bg-light" id="model-testing">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Try Our Models <span class="badge bg-danger animate-pulse">Live Demo</span></h2>
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="card border-0 shadow-lg">
+                        <div class="card-header bg-primary text-white">
+                            <ul class="nav nav-tabs card-header-tabs" id="modelTabs" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="sustainability-tab" data-bs-toggle="tab" data-bs-target="#sustainability" type="button" role="tab" aria-controls="sustainability" aria-selected="true">
+                                        <i class="fas fa-leaf me-2"></i>Sustainability Scoring
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="anomaly-tab" data-bs-toggle="tab" data-bs-target="#anomaly" type="button" role="tab" aria-controls="anomaly" aria-selected="false">
+                                        <i class="fas fa-search me-2"></i>Anomaly Detection
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="verification-tab" data-bs-toggle="tab" data-bs-target="#verification" type="button" role="tab" aria-controls="verification" aria-selected="false">
+                                        <i class="fas fa-shield-alt me-2"></i>zkSNARK Verification
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="tab-content" id="modelTabContent">
+                                <!-- Sustainability Scoring Tab -->
+                                <div class="tab-pane fade show active" id="sustainability" role="tabpanel" aria-labelledby="sustainability-tab">
+                                    <h4 class="mb-4">Sustainability Scoring Model</h4>
+                                    <p class="lead mb-4">Input mining operation parameters to get a sustainability score.</p>
+                                    
+                                    <form id="sustainabilityForm" class="mb-4">
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <label for="energySource" class="form-label">Primary Energy Source</label>
+                                                <select class="form-select" id="energySource" required>
+                                                    <option value="">Select energy source...</option>
+                                                    <option value="solar">Solar</option>
+                                                    <option value="wind">Wind</option>
+                                                    <option value="hydro">Hydroelectric</option>
+                                                    <option value="geothermal">Geothermal</option>
+                                                    <option value="natural_gas">Natural Gas</option>
+                                                    <option value="coal">Coal</option>
+                                                    <option value="mixed">Mixed Sources</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="energyConsumption" class="form-label">Monthly Energy Consumption (kWh)</label>
+                                                <input type="number" class="form-control" id="energyConsumption" min="0" max="1000000" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="hashRate" class="form-label">Hash Rate (TH/s)</label>
+                                                <input type="number" class="form-control" id="hashRate" min="0" max="10000" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="location" class="form-label">Mining Location</label>
+                                                <select class="form-select" id="location" required>
+                                                    <option value="">Select location...</option>
+                                                    <option value="north_america">North America</option>
+                                                    <option value="europe">Europe</option>
+                                                    <option value="asia">Asia</option>
+                                                    <option value="south_america">South America</option>
+                                                    <option value="africa">Africa</option>
+                                                    <option value="oceania">Oceania</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="coolingSystem" class="form-label">Cooling System</label>
+                                                <select class="form-select" id="coolingSystem" required>
+                                                    <option value="">Select cooling system...</option>
+                                                    <option value="air">Air Cooling</option>
+                                                    <option value="liquid">Liquid Cooling</option>
+                                                    <option value="immersion">Immersion Cooling</option>
+                                                    <option value="geothermal">Geothermal Cooling</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="carbonOffset" class="form-label">Carbon Offset (%)</label>
+                                                <input type="number" class="form-control" id="carbonOffset" min="0" max="100" required>
+                                            </div>
+                                        </div>
+                                        <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+                                            <button type="reset" class="btn btn-outline-secondary">Reset</button>
+                                            <button type="submit" class="btn btn-primary">Calculate Score</button>
+                                        </div>
+                                    </form>
+                                    
+                                    <div id="sustainabilityResult" class="result-container p-4 border rounded d-none">
+                                        <div class="row align-items-center">
+                                            <div class="col-md-4">
+                                                <div class="score-gauge">
+                                                    <div class="gauge-body">
+                                                        <div class="gauge-fill"></div>
+                                                        <div class="gauge-cover"></div>
+                                                    </div>
+                                                    <div class="gauge-value">0</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h5>Sustainability Analysis</h5>
+                                                <div class="mb-3">
+                                                    <div class="d-flex justify-content-between mb-1">
+                                                        <span>Energy Efficiency</span>
+                                                        <span class="score-value" id="efficiencyScore">0/100</span>
+                                                    </div>
+                                                    <div class="progress">
+                                                        <div class="progress-bar bg-success" id="efficiencyBar" role="progressbar" style="width: 0%"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <div class="d-flex justify-content-between mb-1">
+                                                        <span>Carbon Footprint</span>
+                                                        <span class="score-value" id="carbonScore">0/100</span>
+                                                    </div>
+                                                    <div class="progress">
+                                                        <div class="progress-bar bg-success" id="carbonBar" role="progressbar" style="width: 0%"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <div class="d-flex justify-content-between mb-1">
+                                                        <span>Renewable Ratio</span>
+                                                        <span class="score-value" id="renewableScore">0/100</span>
+                                                    </div>
+                                                    <div class="progress">
+                                                        <div class="progress-bar bg-success" id="renewableBar" role="progressbar" style="width: 0%"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="alert alert-success mt-3" id="sustainabilityFeedback">
+                                                    Complete the form to see your sustainability score.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Anomaly Detection Tab -->
+                                <div class="tab-pane fade" id="anomaly" role="tabpanel" aria-labelledby="anomaly-tab">
+                                    <h4 class="mb-4">Anomaly Detection Model</h4>
+                                    <p class="lead mb-4">Upload historical mining data to detect reporting anomalies.</p>
+                                    
+                                    <div class="mb-4">
+                                        <label for="anomalyData" class="form-label">Sample Data</label>
+                                        <select class="form-select mb-3" id="anomalyDataSelect">
+                                            <option value="">Select sample data or upload your own...</option>
+                                            <option value="sample1">Sample 1: Normal Operation</option>
+                                            <option value="sample2">Sample 2: Suspicious Reporting</option>
+                                            <option value="sample3">Sample 3: Mixed Pattern</option>
+                                        </select>
+                                        <div class="input-group">
+                                            <input type="file" class="form-control" id="anomalyData" accept=".csv,.json">
+                                            <button class="btn btn-outline-secondary" type="button" id="clearAnomalyFile">Clear</button>
+                                        </div>
+                                        <div class="form-text">Upload CSV or JSON file with mining operation data.</div>
+                                    </div>
+                                    
+                                    <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-4">
+                                        <button type="button" class="btn btn-primary" id="detectAnomalies">Detect Anomalies</button>
+                                    </div>
+                                    
+                                    <div id="anomalyResult" class="result-container p-4 border rounded d-none">
+                                        <h5 class="mb-3">Anomaly Detection Results</h5>
+                                        <div class="chart-container" style="position: relative; height:300px; width:100%">
+                                            <canvas id="anomalyChart"></canvas>
+                                        </div>
+                                        <div class="mt-4">
+                                            <h6>Analysis Summary</h6>
+                                            <ul class="list-group">
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    Total data points analyzed
+                                                    <span class="badge bg-primary rounded-pill" id="totalDataPoints">0</span>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    Anomalies detected
+                                                    <span class="badge bg-danger rounded-pill" id="anomaliesCount">0</span>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    Confidence score
+                                                    <span class="badge bg-info rounded-pill" id="confidenceScore">0%</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="alert alert-info mt-3" id="anomalyFeedback">
+                                            Select a sample or upload data to see anomaly detection results.
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- zkSNARK Verification Tab -->
+                                <div class="tab-pane fade" id="verification" role="tabpanel" aria-labelledby="verification-tab">
+                                    <h4 class="mb-4">zkSNARK Verification Demo</h4>
+                                    <p class="lead mb-4">Verify carbon reporting data without revealing sensitive operational details.</p>
+                                    
+                                    <div class="row mb-4">
+                                        <div class="col-md-6">
+                                            <div class="card h-100">
+                                                <div class="card-header">
+                                                    <h5 class="mb-0">Prover (Mining Operation)</h5>
+                                                </div>
+                                                <div class="card-body">
+                                                    <form id="zkProverForm">
+                                                        <div class="mb-3">
+                                                            <label for="operationId" class="form-label">Operation ID</label>
+                                                            <input type="text" class="form-control" id="operationId" value="miner-0001" required>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="energyData" class="form-label">Energy Consumption (kWh)</label>
+                                                            <input type="number" class="form-control" id="energyData" value="45000" required>
+                                                            <div class="form-text text-danger">This sensitive data will not be revealed</div>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="carbonData" class="form-label">Carbon Emissions (kg CO2)</label>
+                                                            <input type="number" class="form-control" id="carbonData" value="12500" required>
+                                                            <div class="form-text text-danger">This sensitive data will not be revealed</div>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="sustainabilityThreshold" class="form-label">Sustainability Threshold (kg CO2/kWh)</label>
+                                                            <input type="number" class="form-control" id="sustainabilityThreshold" value="0.3" step="0.01" required>
+                                                        </div>
+                                                        <div class="d-grid">
+                                                            <button type="button" class="btn btn-primary" id="generateProof">Generate Proof</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="card h-100">
+                                                <div class="card-header">
+                                                    <h5 class="mb-0">Verifier (Network)</h5>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="mb-3">
+                                                        <label for="proofData" class="form-label">Proof Data</label>
+                                                        <textarea class="form-control" id="proofData" rows="5" readonly></textarea>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="publicInputs" class="form-label">Public Inputs</label>
+                                                        <input type="text" class="form-control" id="publicInputs" readonly>
+                                                        <div class="form-text">Only the operation ID and threshold are public</div>
+                                                    </div>
+                                                    <div class="d-grid">
+                                                        <button type="button" class="btn btn-success" id="verifyProof" disabled>Verify Proof</button>
+                                                    </div>
+                                                    <div class="verification-result mt-3 text-center d-none">
+                                                        <div class="spinner-border text-primary verification-spinner" role="status">
+                                                            <span class="visually-hidden">Verifying...</span>
+                                                        </div>
+                                                        <div class="verification-success d-none">
+                                                            <i class="fas fa-check-circle text-success fa-4x"></i>
+                                                            <h5 class="mt-2">Verification Successful</h5>
+                                                            <p>The operation meets sustainability requirements without revealing sensitive data.</p>
+                                                        </div>
+                                                        <div class="verification-failure d-none">
+                                                            <i class="fas fa-times-circle text-danger fa-4x"></i>
+                                                            <h5 class="mt-2">Verification Failed</h5>
+                                                            <p>The operation does not meet sustainability requirements.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="alert alert-secondary" id="zkExplanation">
+                                        <h5><i class="fas fa-info-circle me-2"></i>How Zero-Knowledge Proofs Work</h5>
+                                        <p>Zero-Knowledge Proofs allow a mining operation to prove they meet sustainability requirements without revealing their actual energy consumption or carbon emission data.</p>
+                                        <p>This technology ensures data privacy while maintaining verifiable sustainability credentials on the blockchain.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="display-5 mb-4">Ready to make crypto mining sustainable?</h2>
+                    <p class="lead mb-4">Join us in our mission to drive the crypto industry toward environmental responsibility.</p>
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="#contact" class="btn btn-light btn-lg">Contact Us</a>
+                        <a href="https://github.com/yourusername/ecochain-guardian" class="btn btn-outline-light btn-lg">View on GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h3 class="mb-4">EcoChain Guardian</h3>
+                    <p>A blockchain-based platform for monitoring and rewarding sustainable cryptocurrency mining operations.</p>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">Web3.py</span>
+                        <span class="tech-badge">ML/AI</span>
+                        <span class="tech-badge">zkSNARKs</span>
+                        <span class="tech-badge">Flask</span>
+                        <span class="tech-badge">GraphQL</span>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h3 class="mb-4">Quick Links</h3>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#home" class="text-white text-decoration-none">Home</a></li>
+                        <li class="mb-2"><a href="#features" class="text-white text-decoration-none">Features</a></li>
+                        <li class="mb-2"><a href="#demo" class="text-white text-decoration-none">Demo</a></li>
+                        <li class="mb-2"><a href="#architecture" class="text-white text-decoration-none">Architecture</a></li>
+                        <li class="mb-2"><a href="#screenshots" class="text-white text-decoration-none">Screenshots</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="mb-4">Contact</h3>
+                    <p><i class="fas fa-envelope me-2"></i> info@ecochainproject.com</p>
+                    <p><i class="fas fa-map-marker-alt me-2"></i> Hackathon HQ, Innovation Valley</p>
+                    <div class="d-flex mt-4">
+                        <a href="#" class="text-white me-3"><i class="fab fa-github fa-2x"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter fa-2x"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-linkedin fa-2x"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-discord fa-2x"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="mt-5 mb-4" style="background-color: rgba(255,255,255,0.2);">
+            <div class="text-center">
+                <p>&copy; 2025 EcoChain Guardian. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 

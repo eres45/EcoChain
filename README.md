@@ -1,20 +1,12 @@
 # 🌱 EcoChain Guardian
 
-EcoChain Guardian is an agent-based system that monitors crypto mining operations globally, scores them based on their carbon footprint using AI/ML techniques, and rewards eco-friendly miners with cryptocurrency tokens.
+EcoChain Guardian is a blockchain-based platform for monitoring, analyzing, and rewarding sustainable cryptocurrency mining operations.
 
-## Table of Contents
+<p align="center">
+  <img src="Jul 7, 2025, 04_17_26 AM.png" alt="EcoChain Guardian Logo" width="200">
+</p>
 
-- [Overview](#overview)
-- [Key Features](#key-features)
-- [Architecture](#architecture)
-- [Installation](#installation)
-- [Configuration](#configuration)
-- [Usage](#usage)
-- [API Reference](#api-reference)
-- [Development](#development)
-- [License](#license)
-
-## Overview
+## 🌟 Overview
 
 The environmental impact of cryptocurrency mining is significant and growing. EcoChain Guardian aims to incentivize more sustainable mining practices by:
 
@@ -25,195 +17,221 @@ The environmental impact of cryptocurrency mining is significant and growing. Ec
 
 By creating financial incentives for sustainable practices, EcoChain Guardian helps drive the crypto industry toward environmental responsibility.
 
-## Key Features
-
-- **Data Collection**: Gather mining operation data and carbon footprint information from various sources
-- **AI/ML Analysis**: Score mining operations based on multiple sustainability factors
-- **Smart Contract Rewards**: Issue ERC-20 tokens and NFT badges to eco-friendly miners
-- **Tiered Reward System**: Higher sustainability scores earn greater rewards
-- **Improvement Suggestions**: Provide miners with actionable suggestions for improving their sustainability
-- **Transparent Reporting**: Track performance and impact over time
-
-## Architecture
-
-EcoChain Guardian follows a modular architecture based on the Superior Agents framework:
-
-### Data Module
-Collects and processes data from mining operations, including:
-- Mining hardware information
-- Energy consumption metrics
-- Carbon footprint data
-- Energy source information
-
-### Analysis Module
-Processes mining data to evaluate sustainability:
-- ML-based scoring model
-- Multi-factor sustainability assessment
-- Tiered classification system
-- Improvement recommendations
-
-### Reward Module
-Handles the distribution of incentives:
-- ERC-20 token minting and distribution
-- NFT badges for sustainability achievements
-- Smart contract interactions
-- Balance tracking
-
-### Agent Module
-Coordinates all activities:
-- Workflow orchestration
-- Scheduling of analysis and reward cycles
-- Reporting and data storage
-- Error handling and recovery
-
-## Installation
+## 🚀 Quick Start
 
 ### Prerequisites
 
-- Python 3.8 or higher
-- Web3 provider (for blockchain interactions)
-- Git
+- Node.js 16+ and npm
+- Python 3.8+
+- Docker and Docker Compose
 
-### Installation Steps
+### Installation
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/your-username/EcoChainGuardian.git
-cd EcoChainGuardian
+git clone https://github.com/yourusername/ecochain-guardian.git
+cd ecochain-guardian
 ```
 
-2. Create and activate a virtual environment:
+2. Install Python dependencies:
 ```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
-
-3. Install the package:
-```bash
+pip install -r requirements.txt
 pip install -e .
 ```
 
-## Configuration
-
-1. Generate a default configuration:
+3. Install web demo dependencies:
 ```bash
-ecochain setup
+cd web-demo
+npm install
+cd ..
 ```
 
-This creates a configuration file at `config/ecochain.json` with default settings.
+### Running the Platform
 
-2. Edit the configuration file to customize:
+#### Start the Web Demo
+
+```bash
+cd web-demo
+node server.js
+```
+The web demo will be available at http://localhost:3010
+
+#### Start the Core Services
+
+```bash
+# Start all services using Docker Compose
+docker-compose up -d
+
+# Or run individual components
+python ecochain/cli.py run
+```
+
+## 🔍 Key Features
+
+### Core Features
+
+- **Sustainability Scoring**: Comprehensive scoring system that evaluates mining operations based on energy sources, efficiency, and environmental impact
+- **Optimization Advisor**: AI-powered recommendations for hardware upgrades, energy efficiency improvements, and cooling optimizations
+- **Predictive Analytics**: Advanced forecasting of energy usage, costs, and market correlations
+- **Compliance Reporting**: Automated generation of ESG reports and regulatory compliance documentation
+- **Smart Contract Automation**: Automated deployment of reward distribution contracts based on sustainability scores
+- **Zero-Knowledge Verification**: Cryptographic proof of renewable energy usage without revealing sensitive operational data
+
+### Advanced Features
+
+- **ML-based Scoring**: Machine learning model for accurate sustainability scoring with anomaly detection
+- **zkSNARK Verification**: Zero-knowledge proofs for verified carbon reporting
+- **DeFi Integration**: EcoToken staking with tier-based rewards
+- **Community Governance**: DAO-style governance for parameter adjustment
+- **Multi-chain Support**: Connect to multiple blockchains beyond Ethereum
+- **Data Provider Network**: Decentralized oracle network for verified carbon data
+
+## 🧪 Testing the Platform
+
+### Testing the Web Demo
+
+1. Navigate to http://localhost:3010 in your browser
+2. Explore the interactive dashboard showing sustainability scores, optimization recommendations, and predictive analytics
+3. Test the smart contract automation feature by filling out the form in the "Test Smart Contract Automation" section
+4. Try the Zero-Knowledge Verification demo to see how miners can prove sustainability without revealing sensitive data
+
+### Testing the ML Models
+
+```bash
+# Test the sustainability scoring model
+python -m ecochain.analysis_module.sustainability_scorer --test
+
+# Test the predictive analytics model
+python -m ecochain.analysis_module.predictive_analytics --test
+
+# Test the optimization advisor
+python -m ecochain.analysis_module.optimization_advisor --test
+
+# Run all tests
+pytest
+```
+
+### Testing Smart Contracts
+
+```bash
+# Test the reward distribution contract
+python agent/scripts/test_auto_contract.py
+
+# Test the governance contract
+python -m ecochain.reward_module.eco_governance --test
+
+# Test the staking contract
+python -m ecochain.reward_module.eco_staking --test
+```
+
+## 📊 Project Structure
+
+```
+ecochain/
+├── agent/                # Superior Agents framework implementation
+├── config/               # Configuration files
+├── data/                 # Data files and ML models
+├── db/                   # Database files
+├── ecochain/             # Core EcoChain Guardian modules
+│   ├── agent_module/     # Main agent orchestration
+│   ├── analysis_module/  # Sustainability scoring and ML models
+│   ├── api/              # API endpoints (REST and GraphQL)
+│   ├── blockchain/       # Blockchain integrations
+│   ├── data_module/      # Data collection and processing
+│   ├── oracles/          # Oracle network for data verification
+│   ├── reward_module/    # Token and NFT reward mechanisms
+│   └── scripts/          # Utility scripts
+├── meta-swap-api/        # Multi-chain swap API
+├── notification/         # Notification service
+├── rag-api/              # Retrieval-augmented generation API
+├── web-demo/             # Interactive web demonstration
+└── README.md             # This file
+```
+
+## 🔧 Configuration
+
+### Core Configuration
+
+Edit `config/ecochain.json` to customize:
 - Analysis interval
 - Reward distribution interval
 - Web3 provider settings
 - Reward parameters
 
-## Usage
+### Environment Variables
 
-### Running the Agent
-
-Start the EcoChain Guardian agent:
-```bash
-ecochain run
-```
-
-Run a single analysis and reward cycle:
-```bash
-ecochain run --once
-```
-
-### Data Collection
-
-Collect and view mining operation data:
-```bash
-ecochain collect
-```
-
-### Analysis
-
-Run sustainability analysis on mining operations:
-```bash
-ecochain analyze
-```
-
-### Reward Simulation
-
-Simulate the reward distribution process:
-```bash
-ecochain simulate
-```
-
-## API Reference
-
-The EcoChain Guardian system provides several programmatic interfaces:
-
-### DataCollector
-
-```python
-from ecochain.data_module.data_collector import DataCollector
-
-collector = DataCollector()
-operations = collector.get_mining_operations()
-carbon_data = collector.get_carbon_data("operation-id")
-energy_mix = collector.get_energy_mix_data("location")
-```
-
-### SustainabilityScorer
-
-```python
-from ecochain.analysis_module.sustainability_scorer import SustainabilityScorer
-
-scorer = SustainabilityScorer()
-score = scorer.score_operation(mining_data, carbon_data)
-```
-
-### EcoToken
-
-```python
-from ecochain.reward_module.eco_token import EcoToken
-
-token = EcoToken()
-token.update_miner_score(miner_address, score)
-token.mint_reward(miner_address, score)
-token.award_badge(miner_address, tier)
-```
-
-### EcoAgent
-
-```python
-from ecochain.agent_module.eco_agent import EcoAgent
-
-agent = EcoAgent("path/to/config.json")
-agent.run()
-scores = agent.get_top_performers(limit=10)
-```
-
-## Development
-
-### Project Structure
+Create a `.env` file in the project root with the following variables:
 
 ```
-ecochain/
-├── agent_module/        # Main agent orchestration
-├── analysis_module/     # Sustainability scoring and ML models
-├── data_module/         # Data collection and processing
-├── reward_module/       # Token and NFT reward mechanisms
-├── cli.py               # Command-line interface
-└── README.md            # This file
+# Web3 Configuration
+WEB3_PROVIDER_URI=https://mainnet.infura.io/v3/YOUR_INFURA_KEY
+PRIVATE_KEY=your_private_key_for_contract_deployment
+
+# API Configuration
+API_PORT=5000
+GRAPHQL_PORT=5001
+
+# Database Configuration
+DB_HOST=localhost
+DB_PORT=5432
+DB_NAME=ecochain
+DB_USER=postgres
+DB_PASSWORD=postgres
+
+# ML Model Configuration
+MODEL_PATH=data/models/sustainability_model.pkl
 ```
 
-### Adding New Data Sources
+## 🖥️ API Reference
 
-To add a new data source, extend the DataCollector class in `data_module/data_collector.py` with your new data collection methods.
+### REST API
 
-### Modifying the Scoring Algorithm
+The platform provides a RESTful API for integration with other systems:
 
-The sustainability scoring algorithm is defined in `analysis_module/sustainability_scorer.py`. You can adjust the weights and factors to emphasize different sustainability aspects.
+```
+GET /api/sustainability-scores - Get sustainability scores for mining operations
+GET /api/optimization-recommendations - Get optimization recommendations
+GET /api/predictive-analytics - Get predictive analytics data
+GET /api/compliance-reports - Get compliance reports
+GET /api/auto-contracts - Get information about automated contracts
+GET /api/zk-verifications - Get zero-knowledge verification data
+```
 
-### Customizing Rewards
+### GraphQL API
 
-Reward distribution logic is in `reward_module/eco_token.py`. You can modify the token emission rate, reward formulas, and badge criteria.
+For more complex data queries, use the GraphQL API at `/graphql`.
 
-## License
+## 💪 Advantages of EcoChain Guardian
 
-This project is licensed under the Apache License 2.0 - see the LICENSE file for details. 
+### Environmental Impact
+
+- **Reduces Carbon Footprint**: Incentivizes miners to adopt renewable energy sources
+- **Promotes Efficiency**: Encourages use of more energy-efficient mining hardware
+- **Measurable Impact**: Tracks and reports on environmental improvements over time
+
+### Technical Innovation
+
+- **Blockchain + ML Integration**: Combines blockchain technology with machine learning for accurate scoring
+- **Zero-Knowledge Proofs**: Uses advanced cryptography to maintain privacy while ensuring transparency
+- **Smart Contract Automation**: Reduces friction in reward distribution through automation
+
+### Business Value
+
+- **Incentive Alignment**: Creates financial incentives for sustainable practices
+- **Transparency**: Provides verifiable proof of sustainability claims
+- **Regulatory Readiness**: Helps miners prepare for potential future regulations
+- **Brand Value**: Enhances reputation for environmentally conscious mining operations
+
+### Practical Implementation
+
+- **End-to-End Solution**: Covers everything from data collection to reward distribution
+- **Scalable Architecture**: Designed to handle thousands of mining operations
+- **User-Friendly Interface**: Easy-to-use dashboard for miners and stakeholders
+
+## 📜 License
+
+This project is licensed under the Apache License 2.0 - see the LICENSE file for details.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please see CONTRIBUTING.md for details on how to contribute to this project. 

@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoChain Guardian | Sustainable Crypto Mining Platform</title>
+  <link rel="icon" href="/img/ecochain-logo.png" type="image/png">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/modals.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-container">
+      <div class="logo">
+        <img src="/img/ecochain-logo.png" alt="EcoChain Logo" style="height: 40px; width: auto;">
+        <span class="logo-text">EcoChain Guardian</span>
+      </div>
+      
+      <nav class="nav">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
+          <li class="nav-item"><a href="#features" class="nav-link">Features</a></li>
+          <li class="nav-item"><a href="#dashboard" class="nav-link">Dashboard</a></li>
+          <li class="nav-item"><a href="#demo" class="nav-link">Demo</a></li>
+          <li class="nav-item"><a href="#test" class="nav-link">Test Features</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-title">Sustainable Crypto Mining with EcoChain Guardian</h1>
+        <p class="hero-subtitle">Monitor, analyze, and reward eco-friendly cryptocurrency mining operations with blockchain-based verification</p>
+        <div class="hero-buttons">
+          <a href="#features" class="btn btn-secondary">Explore Features</a>
+          <a href="#test" class="btn btn-outline">Test Platform</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Features Section -->
+  <section id="features" class="features">
+    <div class="container">
+      <h2 class="section-title">Platform Features</h2>
+      
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-leaf"></i>
+          </div>
+          <h3 class="feature-title">Sustainability Scoring</h3>
+          <p class="feature-description">Comprehensive scoring system that evaluates mining operations based on energy sources, efficiency, and environmental impact.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-lightbulb"></i>
+          </div>
+          <h3 class="feature-title">Optimization Advisor</h3>
+          <p class="feature-description">AI-powered recommendations for hardware upgrades, energy efficiency improvements, and cooling optimizations.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h3 class="feature-title">Predictive Analytics</h3>
+          <p class="feature-description">Advanced forecasting of energy usage, costs, and market correlations to help plan sustainable mining operations.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-file-contract"></i>
+          </div>
+          <h3 class="feature-title">Compliance Reporting</h3>
+          <p class="feature-description">Automated generation of ESG (Environmental, Social, Governance) reports and regulatory compliance documentation.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-robot"></i>
+          </div>
+          <h3 class="feature-title">Smart Contract Automation</h3>
+          <p class="feature-description">Automated deployment of reward distribution contracts based on sustainability scores and verified metrics.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3 class="feature-title">Zero-Knowledge Verification</h3>
+          <p class="feature-description">Cryptographic proof of renewable energy usage and carbon offsets without revealing sensitive operational data.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Dashboard Section -->
+  <section id="dashboard" class="dashboard-section">
+    <div class="container">
+      <h2 class="section-title">Platform Dashboard</h2>
+      
+      <!-- Sustainability Scores -->
+      <div id="sustainability-scores-container" class="dashboard-card">
+        <div class="dashboard-header">
+          <h3 class="dashboard-title">Sustainability Scores</h3>
+          <div class="dashboard-actions">
+            <button class="btn btn-sm btn-outline">Filter</button>
+            <button class="btn btn-sm btn-outline">Export</button>
+          </div>
+        </div>
+        
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Operation Name</th>
+                <th>Location</th>
+                <th>Energy Source</th>
+                <th>Score</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="sustainability-scores-table">
+              <tr>
+                <td colspan="5" class="text-center">Loading...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+      <!-- Optimization Recommendations -->
+      <div id="optimization-container" class="dashboard-card">
+        <div class="dashboard-header">
+          <h3 class="dashboard-title">Optimization Recommendations</h3>
+        </div>
+        
+        <div class="row">
+          <div class="col-4">
+            <h4>Hardware</h4>
+            <div id="hardware-recommendations">
+              <p class="text-center">Loading...</p>
+            </div>
+          </div>
+          
+          <div class="col-4">
+            <h4>Cooling Systems</h4>
+            <div id="cooling-recommendations">
+              <p class="text-center">Loading...</p>
+            </div>
+          </div>
+          
+          <div class="col-4">
+            <h4>Energy Sources</h4>
+            <div id="energy-recommendations">
+              <p class="text-center">Loading...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Predictive Analytics -->
+      <div id="predictive-analytics-container" class="dashboard-card">
+        <div class="dashboard-header">
+          <h3 class="dashboard-title">Predictive Analytics</h3>
+          <div class="dashboard-actions">
+            <button class="btn btn-sm btn-outline">Time Range</button>
+            <button class="btn btn-sm btn-outline">Export</button>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-8">
+            <h4>Energy Usage Forecast</h4>
+            <div class="chart-container">
+              <canvas id="energy-forecast-chart"></canvas>
+            </div>
+          </div>
+          
+          <div class="col-4">
+            <h4>Market Correlation Factors</h4>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Factor</th>
+                  <th>Correlation</th>
+                </tr>
+              </thead>
+              <tbody id="market-correlation-table">
+                <tr>
+                  <td colspan="2" class="text-center">Loading...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Compliance Reports -->
+      <div id="compliance-reports-container" class="dashboard-card">
+        <div class="dashboard-header">
+          <h3 class="dashboard-title">Compliance Reports</h3>
+          <div class="dashboard-actions">
+            <button class="btn btn-sm btn-outline">Generate New Report</button>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-6">
+            <h4>ESG Reports</h4>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Report Title</th>
+                  <th>Date</th>
+                  <th>Score</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="esg-reports-table">
+                <tr>
+                  <td colspan="5" class="text-center">Loading...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <div class="col-6">
+            <h4>Regulatory Compliance</h4>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Regulation</th>
+                  <th>Status</th>
+                  <th>Last Audit</th>
+                </tr>
+              </thead>
+              <tbody id="regulatory-compliance-table">
+                <tr>
+                  <td colspan="3" class="text-center">Loading...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Auto Contracts -->
+      <div id="auto-contracts-container" class="dashboard-card">
+        <div class="dashboard-header">
+          <h3 class="dashboard-title">Smart Contract Automation</h3>
+          <div class="dashboard-actions">
+            <button class="btn btn-sm btn-primary" onclick="showDeployContractModal()">
+              <i class="fas fa-plus-circle"></i> Deploy New Contract
+            </button>
+            <button class="btn btn-sm btn-outline" onclick="showScheduleDistributionModal()">
+              <i class="fas fa-calendar-plus"></i> Schedule Distribution
+            </button>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-6">
+            <div class="dashboard-header">
+              <h4>Deployed Contracts</h4>
+              <div class="dashboard-actions">
+                <div class="btn-group">
+                  <button class="btn btn-sm btn-outline dropdown-toggle" id="contract-filter">
+                    All Contracts <i class="fas fa-caret-down"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Address</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="contracts-table">
+                <tr>
+                  <td colspan="5" class="text-center">Loading...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <div class="col-6">
+            <div class="dashboard-header">
+              <h4>Reward Distributions</h4>
+              <div class="dashboard-actions">
+                <button class="btn btn-sm btn-outline" id="distribution-history">
+                  <i class="fas fa-history"></i> View History
+                </button>
+              </div>
+            </div>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Amount</th>
+                  <th>Recipients</th>
+                  <th>Tx Hash</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="distributions-table">
+                <tr>
+                  <td colspan="5" class="text-center">Loading...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <div class="row mt-4">
+          <div class="col-12">
+            <div class="dashboard-header">
+              <h4>Contract Automation Workflow</h4>
+              <div class="dashboard-actions">
+                <button class="btn btn-sm btn-outline" id="workflow-info">
+                  <i class="fas fa-info-circle"></i> How It Works
+                </button>
+              </div>
+            </div>
+            <div class="workflow-diagram">
+              <div class="workflow-steps">
+                <div class="workflow-step">
+                  <div class="workflow-step-icon">
+                    <i class="fas fa-file-contract"></i>
+                  </div>
+                  <div class="workflow-step-content">
+                    <h5>1. Contract Deployment</h5>
+                    <p>Smart contracts are automatically deployed based on predefined templates</p>
+                  </div>
+                </div>
+                <div class="workflow-step">
+                  <div class="workflow-step-icon">
+                    <i class="fas fa-tasks"></i>
+                  </div>
+                  <div class="workflow-step-content">
+                    <h5>2. Score Integration</h5>
+                    <p>Sustainability scores are fed into the contracts from the scoring system</p>
+                  </div>
+                </div>
+                <div class="workflow-step">
+                  <div class="workflow-step-icon">
+                    <i class="fas fa-calendar-check"></i>
+                  </div>
+                  <div class="workflow-step-content">
+                    <h5>3. Distribution Scheduling</h5>
+                    <p>Reward distributions are scheduled based on predefined criteria</p>
+                  </div>
+                </div>
+                <div class="workflow-step">
+                  <div class="workflow-step-icon">
+                    <i class="fas fa-coins"></i>
+                  </div>
+                  <div class="workflow-step-content">
+                    <h5>4. Reward Distribution</h5>
+                    <p>Rewards are automatically distributed to qualifying mining operations</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- ZK Verifications -->
+      <div id="zk-verifications-container" class="dashboard-card">
+        <div class="dashboard-header">
+          <h3 class="dashboard-title">Zero-Knowledge Verifications</h3>
+          <div class="dashboard-actions">
+            <button class="btn btn-sm btn-outline">Create New Proof</button>
+          </div>
+        </div>
+        
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Type</th>
+              <th>Date</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="zk-verifications-table">
+            <tr>
+              <td colspan="5" class="text-center">Loading...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Demo Video Section -->
+  <section id="demo" class="demo-video">
+    <div class="container">
+      <h2 class="section-title text-center" style="color: white;">Platform Demo</h2>
+      <p class="text-center mb-4" style="color: #ccc;">Watch our comprehensive demo of the EcoChain Guardian platform in action</p>
+      
+      <div class="video-container">
+        <div class="video-placeholder">
+          <i class="fas fa-play-circle"></i>
+          <p>Click to play demo video</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Screenshots Section -->
+  <section class="screenshots">
+    <div class="container">
+      <h2 class="section-title">Platform Screenshots</h2>
+      
+      <div class="screenshot-grid">
+        <div class="screenshot-item">
+          <div class="screenshot-placeholder">
+            <i class="fas fa-image"></i>
+            <p>Dashboard Overview</p>
+          </div>
+        </div>
+        
+        <div class="screenshot-item">
+          <div class="screenshot-placeholder">
+            <i class="fas fa-image"></i>
+            <p>Sustainability Scoring</p>
+          </div>
+        </div>
+        
+        <div class="screenshot-item">
+          <div class="screenshot-placeholder">
+            <i class="fas fa-image"></i>
+            <p>Optimization Recommendations</p>
+          </div>
+        </div>
+        
+        <div class="screenshot-item">
+          <div class="screenshot-placeholder">
+            <i class="fas fa-image"></i>
+            <p>Predictive Analytics</p>
+          </div>
+        </div>
+        
+        <div class="screenshot-item">
+          <div class="screenshot-placeholder">
+            <i class="fas fa-image"></i>
+            <p>Compliance Reporting</p>
+          </div>
+        </div>
+        
+        <div class="screenshot-item">
+          <div class="screenshot-placeholder">
+            <i class="fas fa-image"></i>
+            <p>Smart Contract Management</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Test Features Section -->
+  <section id="test" class="test-features">
+    <div class="container">
+      <h2 class="section-title">Test Our Features</h2>
+      <p class="text-center mb-5">Experience the power of the EcoChain Guardian platform with these interactive demos</p>
+      
+      <div class="row">
+        <div class="col-6">
+          <!-- Sustainability Score Test -->
+          <div class="test-card">
+            <h3>Test Sustainability Scoring</h3>
+            <p>Enter your mining operation details to calculate a sustainability score</p>
+            
+            <form id="test-score-form" class="test-form">
+              <div class="form-group">
+                <label class="form-label" for="operation-name">Operation Name</label>
+                <input type="text" class="form-control" id="operation-name" placeholder="My Mining Operation" required>
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label" for="energy-source">Primary Energy Source</label>
+                <select class="form-select" id="energy-source" required>
+                  <option value="">Select Energy Source</option>
+                  <option value="solar">Solar</option>
+                  <option value="wind">Wind</option>
+                  <option value="hydro">Hydroelectric</option>
+                  <option value="geothermal">Geothermal</option>
+                  <option value="natural-gas">Natural Gas</option>
+                  <option value="coal">Coal</option>
+                  <option value="grid">Grid Mix</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label" for="energy-efficiency">Energy Efficiency Rating (0-5)</label>
+                <input type="number" class="form-control" id="energy-efficiency" min="0" max="5" step="0.1" value="3" required>
+              </div>
+              
+              <button type="submit" class="btn btn-primary">Calculate Score</button>
+            </form>
+            
+            <div id="score-result" class="result-container" style="display: none;"></div>
+          </div>
+          
+          <!-- Optimization Test -->
+          <div class="test-card">
+            <h3>Test Optimization Advisor</h3>
+            <p>Get personalized recommendations for your mining operation</p>
+            
+            <form id="test-optimization-form" class="test-form">
+              <div class="form-group">
+                <label class="form-label" for="current-hardware">Current Hardware Type</label>
+                <select class="form-select" id="current-hardware" required>
+                  <option value="">Select Hardware Type</option>
+                  <option value="asic">ASIC Miners</option>
+                  <option value="gpu">GPU Rigs</option>
+                  <option value="cpu">CPU Mining</option>
+                  <option value="mixed">Mixed Hardware</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label" for="power-consumption">Daily Power Consumption (kWh)</label>
+                <input type="number" class="form-control" id="power-consumption" min="1" value="100" required>
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label" for="cooling-system">Current Cooling System</label>
+                <select class="form-select" id="cooling-system" required>
+                  <option value="">Select Cooling System</option>
+                  <option value="air">Air Cooling</option>
+                  <option value="liquid">Liquid Cooling</option>
+                  <option value="immersion">Immersion Cooling</option>
+                  <option value="none">No Specialized Cooling</option>
+                </select>
+              </div>
+              
+              <button type="submit" class="btn btn-primary">Get Recommendations</button>
+            </form>
+            
+            <div id="optimization-result" class="result-container" style="display: none;"></div>
+          </div>
+        </div>
+        
+        <div class="col-6">
+          <!-- Smart Contract Test -->
+          <div class="test-card">
+            <h3>Test Smart Contract Automation</h3>
+            <p>Simulate deploying a reward distribution contract</p>
+            
+            <form id="test-contract-form" class="test-form">
+              <div class="form-group">
+                <label class="form-label" for="contract-type">Contract Type</label>
+                <select class="form-select" id="contract-type" required>
+                  <option value="">Select Contract Type</option>
+                  <option value="reward">Reward Distribution</option>
+                  <option value="staking">Staking Pool</option>
+                  <option value="governance">Governance Voting</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label" for="reward-amount">Reward Amount (ECO Tokens)</label>
+                <input type="number" class="form-control" id="reward-amount" min="1000" value="100000" required>
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label" for="recipients">Number of Recipients</label>
+                <input type="number" class="form-control" id="recipients" min="1" value="50" required>
+              </div>
+              
+              <button type="submit" class="btn btn-primary">Deploy Contract</button>
+            </form>
+            
+            <div id="contract-result" class="result-container" style="display: none;"></div>
+          </div>
+          
+          <!-- ZK Verification Test -->
+          <div class="test-card">
+            <h3>Zero-Knowledge Verification Demo</h3>
+            <p>This interactive demo shows how EcoChain Guardian verifies renewable energy usage without revealing sensitive operational data</p>
+            
+            <div class="d-flex justify-content-center mt-4 mb-4">
+              <i class="fas fa-shield-alt" style="font-size: 4rem; color: var(--primary);"></i>
+            </div>
+            
+            <div class="d-flex justify-content-center">
+              <a href="#" class="btn btn-secondary">View ZK Demo</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">
+            <img src="/img/ecochain-logo.png" alt="EcoChain Logo" style="height: 30px; width: auto; margin-right: 10px;">
+            EcoChain Guardian
+          </div>
+          <p>Sustainable blockchain technology for a greener future.</p>
+        </div>
+        
+        <div>
+          <h4 class="footer-links-title">Platform</h4>
+          <ul class="footer-links">
+            <li class="footer-link"><a href="#features">Features</a></li>
+            <li class="footer-link"><a href="#dashboard">Dashboard</a></li>
+            <li class="footer-link"><a href="#test">Test Features</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="footer-links-title">Resources</h4>
+          <ul class="footer-links">
+            <li class="footer-link"><a href="#">Documentation</a></li>
+            <li class="footer-link"><a href="#">API Reference</a></li>
+            <li class="footer-link"><a href="#">GitHub</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="footer-links-title">Connect</h4>
+          <ul class="footer-links">
+            <li class="footer-link"><a href="#">Twitter</a></li>
+            <li class="footer-link"><a href="#">Discord</a></li>
+            <li class="footer-link"><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="copyright">
+        &copy; 2024 EcoChain Guardian. All rights reserved.
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Custom JS -->
+  <script src="/js/script.js"></script>
+  <script src="/js/modals.js"></script>
+</body>
+</html> 

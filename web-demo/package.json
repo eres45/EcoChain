@@ -1,0 +1,28 @@
+{
+  "name": "ecochain-guardian-demo",
+  "version": "1.0.0",
+  "description": "Premium demo website for EcoChain Guardian platform",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "ecochain",
+    "blockchain",
+    "sustainability",
+    "green-mining",
+    "crypto",
+    "demo"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
