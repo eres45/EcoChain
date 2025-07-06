@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  ecochain-agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./config:/app/config
+      - ./data:/app/data
+    environment:
+      - PYTHONUNBUFFERED=1
+    command: ecochain run
+    restart: unless-stopped
+
+  # Ganache for local Ethereum development
+  ganache:
+    image: trufflesuite/ganache:latest
+    ports:
+      - "8545:8545"
+    command: --deterministic --miner.blockTime 5 

@@ -1,0 +1,15 @@
+{
+  "analysis_interval_seconds": 3600,
+  "reward_interval_seconds": 86400,
+  "min_score_for_reward": 30,
+  "web3_provider": "http://ganache:8545",
+  "chain_id": 1337,
+  "base_reward": 100,
+  "badge_tiers": {
+    "Platinum": 90,
+    "Gold": 75,
+    "Silver": 60,
+    "Bronze": 45,
+    "Standard": 30
+  }
+} 
