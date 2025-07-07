@@ -345,4 +345,3 @@ class DataCollector:
         except Exception as e:
             logger.error(f"Error getting token prices: {str(e)}")
             return [] 
-        } 
